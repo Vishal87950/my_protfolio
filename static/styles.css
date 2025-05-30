@@ -57,16 +57,20 @@ main {
 }
 
 /* Footer */
+/* Footer */
 footer {
+    background-color: #000;          /* pure black background */
+    color: #fff;                     /* white text */
     text-align: center;
-    padding: 15px 20px;
-    background: #333;
-    color: #fff;
-    position: relative;
-    bottom: 0;
+    padding: 10px 15px;
+    font-size: 0.9rem;               /* keeps it similar */
+    font-family: Arial, sans-serif; /* match body font */
+    position: relative;              /* keep normal flow */
     width: 100%;
-    font-size: 0.9rem;
+    box-sizing: border-box;
+    user-select: none;               /* optional */
 }
+
 
 /* Responsive styles */
 @media (max-width: 768px) {
@@ -86,5 +90,11 @@ footer {
 
     main {
         padding: 100px 20px 40px;
+    }
+}
+@media (max-width: 480px) {
+    footer {
+        font-size: 0.8rem;       /* smaller font on small screens */
+        padding: 8px 10px;
     }
 }
