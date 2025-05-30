@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
   <title>My Portfolio</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
@@ -182,8 +183,10 @@
     {% block content %}{% endblock %}
   </main>
 
-  <footer>
-    <p>&copy; {{ current_year or 2025 }} Vishal | All Rights Reserved.</p>
-  </footer>
+  
+<footer class="bottom-footer">
+  <p>© 2025 Vishal | All Rights Reserved.</p>
+</footer>
+
 </body>
 </html>
