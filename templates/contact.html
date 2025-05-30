@@ -1,0 +1,189 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+  .contact-section {
+    max-width: 700px;
+    margin: 60px auto;
+    padding: 40px;
+    background: #fff8dc;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  .contact-section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    color: #000;
+    border-left: 6px solid #FFD700;
+    padding-left: 15px;
+  }
+
+  /* Flash message styling */
+  .flashes {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .flashes li.success {
+    color: #155724;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: 600;
+  }
+
+  form label {
+    display: block;
+    margin-top: 15px;
+    font-weight: 600;
+    color: #000;
+  }
+
+  form input,
+  form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    margin-top: 5px;
+    border: 2px solid #FFD700;
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+
+  form input:focus,
+  form textarea:focus {
+    border-color: #000;
+  }
+
+  form textarea {
+    resize: vertical;
+    height: 120px;
+  }
+
+  form button {
+    margin-top: 25px;
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem;
+    background-color: #FFD700;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  }
+
+  form button:hover {
+    background-color: #000;
+    color: #FFD700;
+    transform: translateY(-2px);
+  }
+
+  .social-icons {
+    margin-top: 30px;
+    text-align: center;
+  }
+
+  .social-icons a {
+    margin: 0 10px;
+    font-size: 1.6rem;
+    color: #000;
+    transition: color 0.3s ease;
+  }
+
+  .social-icons a:hover {
+    color: #FFD700;
+  }
+
+  @media (max-width: 768px) {
+    .contact-section {
+      padding: 30px 20px;
+    }
+
+    .contact-section h2 {
+      font-size: 2rem;
+    }
+
+    form button {
+      font-size: 1rem;
+    }
+
+    .social-icons a {
+      font-size: 1.4rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .contact-section {
+      padding: 20px 15px;
+    }
+
+    .contact-section h2 {
+      font-size: 1.8rem;
+    }
+
+    form input,
+    form textarea {
+      padding: 10px 12px;
+      font-size: 0.9rem;
+    }
+
+    form button {
+      padding: 12px;
+      font-size: 0.9rem;
+    }
+
+    .social-icons a {
+      font-size: 1.2rem;
+    }
+  }
+</style>
+
+<section class="contact-section" aria-label="Contact Me">
+  <h2>Contact Me</h2>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <ul class="flashes">
+        {% for category, message in messages %}
+          <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+
+  <form action="{{ url_for('contact') }}" method="post">
+
+    <label for="name"><i class="fas fa-user"></i> Name:</label>
+    <input type="text" id="name" name="name" placeholder="Your full name" required>
+
+    <label for="email"><i class="fas fa-envelope"></i> Email:</label>
+    <input type="email" id="email" name="email" placeholder="Your email address" required>
+
+    <label for="message"><i class="fas fa-comment"></i> Message:</label>
+    <textarea id="message" name="message" placeholder="Your message here..." required></textarea>
+
+    <button type="submit"><i class="fas fa-paper-plane"></i> Send Message</button>
+  </form>
+
+  <div class="social-icons">
+      <a href="https://github.com/Vishal87950" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/vishal-chauhan-a732b7223/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://youtube.com/@vishalrajputchauhan87950?si=aNwK7QCe0Z3MHWeM" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      <a href="https://t.me/vishal_chauhan_87950" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+
+      <a href="https://www.instagram.com/vishalchauhan87950?igsh=MWhxMDU5YTMwenVtOQ%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="mailto:vishalchauhan87950@gmail.com" target="_blank" aria-label="Email"><i class="fas fa-envelope"></i></a>
+  </div>
+</section>
+{% endblock %}

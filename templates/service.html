@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+  .services-section {
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 40px 20px;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  .services-section h2 {
+    font-size: 2.8rem;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #000;
+    position: relative;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+  }
+
+  .service-card {
+    background: #fff8dc;
+    padding: 30px 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .service-card:hover {
+    transform: translateY(-8px);
+  }
+
+  .service-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 20px;
+    color: #FFD700;
+  }
+
+  .service-card h3 {
+    font-size: 1.6rem;
+    color: #000;
+    margin-bottom: 15px;
+  }
+
+  .service-card p {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .services-section {
+      padding: 30px 15px;
+    }
+
+    .services-section h2 {
+      font-size: 2.2rem;
+      margin-bottom: 30px;
+    }
+
+    .service-card {
+      padding: 20px;
+    }
+
+    .service-card h3 {
+      font-size: 1.4rem;
+    }
+
+    .service-card p {
+      font-size: 0.95rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .services-section h2 {
+      font-size: 1.8rem;
+    }
+
+    .service-card {
+      padding: 15px;
+    }
+
+    .service-card h3 {
+      font-size: 1.2rem;
+    }
+
+    .service-card p {
+      font-size: 0.85rem;
+    }
+
+    .service-icon {
+      width: 50px;
+      height: 50px;
+    }
+  }
+</style>
+
+<section class="services-section" aria-label="My Services">
+  <h2>What I Offer</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <img src="https://fonts.gstatic.com/s/i/short-term/release/materialsymbolsoutlined/code/default/48px.svg" alt="Web Development Icon" class="service-icon">
+      <h3>Web Development</h3>
+      <p>Building responsive and high-performance web applications using modern frameworks and clean code principles.</p>
+    </div>
+
+    <div class="service-card">
+      <img src="https://fonts.gstatic.com/s/i/short-term/release/materialsymbolsoutlined/psychology/default/48px.svg" alt="AI Icon" class="service-icon">
+      <h3>AI & Machine Learning</h3>
+      <p>Designing intelligent systems and deploying machine learning models for data-driven decision-making.</p>
+    </div>
+
+    <div class="service-card">
+      <img src="https://fonts.gstatic.com/s/i/short-term/release/materialsymbolsoutlined/database/default/48px.svg" alt="Data Analytics Icon" class="service-icon">
+      <h3>Data Analytics</h3>
+      <p>Providing insights from complex datasets through advanced analytics, visualizations, and storytelling.</p>
+    </div>
+
+    <div class="service-card">
+      <img src="https://fonts.gstatic.com/s/i/short-term/release/materialsymbolsoutlined/robot/default/48px.svg" alt="Automation Icon" class="service-icon">
+      <h3>Automation</h3>
+      <p>Automating repetitive tasks and workflows using Python, APIs, and cloud integrations to improve efficiency.</p>
+    </div>
+
+    <div class="service-card">
+      <img src="https://fonts.gstatic.com/s/i/short-term/release/materialsymbolsoutlined/analytics/default/48px.svg" alt="Data Science Icon" class="service-icon">
+      <h3>Data Science</h3>
+      <p>Extracting value from data with predictive modeling, data mining, and statistical analysis.</p>
+    </div>
+
+    <div class="service-card">
+      <img src="https://fonts.gstatic.com/s/i/short-term/release/materialsymbolsoutlined/smart_toy/default/48px.svg" alt="Agentic AI Icon" class="service-icon">
+      <h3>Agentic AI</h3>
+      <p>Developing autonomous AI agents capable of planning, reasoning, and taking actions to solve complex tasks.</p>
+    </div>
+  </div>
+</section>
+{% endblock %}

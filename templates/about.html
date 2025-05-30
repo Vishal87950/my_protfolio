@@ -1,0 +1,497 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+    .about-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5% 2%;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 40px;
+      align-items: center;
+    }
+  
+    .about-image img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 50%;
+      border: 6px solid #FFD700;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      object-fit: cover;
+    }
+  
+    .about-content h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      border-left: 6px solid #FFD700;
+      padding-left: 15px;
+    }
+  
+    .typewriter {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #333;
+      border-right: 3px solid #FFD700;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 4s steps(40, end), blink 0.75s step-end infinite;
+      width: 100%;
+    }
+  
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+  
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+  
+    .education-section {
+      margin-top: 30px;
+    }
+  
+    .education-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+  
+    .edu-card {
+      background: #fff8dc;
+      border-left: 6px solid #FFD700;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      position: relative;
+    }
+  
+    .edu-card h5 {
+      margin: 0;
+      font-size: 1.1rem;
+      color: #000;
+    }
+  
+    .edu-card p {
+      margin: 5px 0;
+      font-size: 0.95rem;
+      color: #333;
+    }
+  
+    .edu-card ul {
+      margin: 5px 0 0 20px;
+      padding: 0;
+      color: #333;
+      font-size: 0.95rem;
+    }
+  
+    .edu-details {
+      display: none;
+      margin-top: 10px;
+    }
+  
+    .more-btn {
+      cursor: pointer;
+      color: #FFD700;
+      font-weight: bold;
+      margin-top: 10px;
+      display: inline-block;
+      text-decoration: underline;
+      font-size: 0.9rem;
+    }
+  
+    .skills-bar {
+      margin-top: 30px;
+    }
+  
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+  
+    .skill-card {
+      background: #fff8dc;
+      border-left: 6px solid #FFD700;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+  
+    .skill-card h5 {
+      margin: 0 0 15px 0;
+      font-size: 1.1rem;
+      color: #000;
+    }
+  
+    .skill-list {
+      margin-bottom: 15px;
+      font-size: 0.95rem;
+      color: #333;
+    }
+  
+    .bar {
+      margin-bottom: 15px;
+    }
+  
+    .bar .progress {
+      background-color: #eee;
+      border-radius: 20px;
+      height: 15px;
+      overflow: hidden;
+    }
+  
+    .bar .progress div {
+      height: 100%;
+      width: 0;
+      animation: fillBar 2s forwards;
+    }
+  
+    /* Colors based on percentage */
+    .bar .progress div.high {
+      background-color: #009688; /* >= 85 */
+    }
+  
+    .bar .progress div.medium {
+      background-color: #FF6F00; /* 60 to < 85 */
+    }
+  
+    .bar .progress div.low {
+      background-color: #2979FF; /* < 50 */
+    }
+  
+    @keyframes fillBar {
+      to { width: var(--width); }
+    }
+  
+    .resume-download {
+      display: inline-block;
+      margin-top: 30px;
+      background-color: #FFD700;
+      color: #000;
+      padding: 12px 30px;
+      font-weight: bold;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+  
+    .resume-download:hover {
+      background: #000;
+      color: #FFD700;
+    }
+  
+    .social-icons {
+      margin-top: 20px;
+    }
+  
+    .social-icons a {
+      margin-right: 15px;
+      font-size: 1.5rem;
+      color: #000;
+      transition: color 0.3s ease;
+    }
+  
+    .social-icons a:hover {
+      color: #FFD700;
+    }
+  
+    @media (max-width: 768px) {
+      .about-section {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+  
+      .about-content h2 {
+        border-left: none;
+        padding-left: 0;
+      }
+  
+      .about-image {
+        justify-self: center;
+      }
+  
+      .edu-card, .skill-card {
+        padding: 15px;
+      }
+  
+      .resume-download {
+        padding: 10px 20px;
+      }
+    }
+  
+    @media (max-width: 480px) {
+      .about-content h2 {
+        font-size: 2rem;
+      }
+  
+      .typewriter {
+        font-size: 1rem;
+      }
+  
+      .edu-card h5, .skill-card h5 {
+        font-size: 1rem;
+      }
+  
+      .more-btn {
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+  
+
+<section class="about-section" aria-label="About Me">
+  <div class="about-image">
+    <img src="{{ url_for('static', filename='VISHAL PIC 2.jpg') }}" alt="Vishal's Profile Picture">
+  </div>
+  <div class="about-content">
+    <h2>About Me</h2>
+    <p class="typewriter">Turning ideas into intelligent solutions using AI, Data Science, and Software Engineering.</p>
+    <p>Hi! I'm Vishal, a Computer Science graduate with a passion for innovation. I specialize in crafting AI-driven tools, automation systems, and data-powered solutions. With experience in Python, Flask, ML, and software engineering, I’m dedicated to creating impactful tech.</p>
+
+    <!-- Education Section -->
+    <div class="education-section">
+      <h4>Education</h4>
+      <div class="education-grid">
+        <div class="edu-card">
+          <h5>B.Tech – Computer Science and Engineering.(2020 - 2024)</h5>
+          <p>Dronacharya Group of Institutions, Greater Noida</p>
+          <span class="more-btn" onclick="toggleDetails(this)">More</span>
+          <div class="edu-details">
+            <p>Percentage: 76.6%</p>
+            <p>Coursework: Data Structure and Algorithms, Operating systems, Computer Network, Mathematics, Data Base Management system (DBMS), OOPs, Theory of Automatin and Logics (TAFL), Computer Design,Soft Skills, </p>
+          </div>
+        </div>
+        <div class="edu-card">
+          <h5>Intermediate [12th]- (2020)</h5>
+          <p>Sarasvati Vidya Mandir Inter College</p>
+          <span class="more-btn" onclick="toggleDetails(this)">More</span>
+          <div class="edu-details">
+            <p>Percentage: 77.60%</p>
+            <p>Subjects: Mathematics, Physics, Chemistry, English, Hindi</p>
+          </div>
+        </div>
+        <div class="edu-card">
+          <h5>High School [10th]- (2018)</h5>
+          <p>Sarasvati Vidya Mandir Inter College</p>
+          <span class="more-btn" onclick="toggleDetails(this)">More</span>
+          <div class="edu-details">
+            <p>Percentage: 85.67%</p>
+            <p>Subjects: Hindi, English, Science, Mathematics, Social Science, Art</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Experience Section -->
+    <div class="education-section" style="margin-top: 30px;">
+        <h4>Experience </h4>
+        <div class="education-grid">
+  
+          <div class="edu-card">
+            <h5>JP Consultancies & Engineering, Noida</h5>
+            <p><strong>Role:</strong> Data Analyst</p>
+            <span class="more-btn" onclick="toggleDetails(this)">More</span>
+            <div class="edu-details">
+              <p>Duration: August 2024 to March 2025 </p>
+              <ul>
+                <li>Developed Dashboard using Power BI.</li>
+                <li>Find insights from data & help business to take decisions.</li>
+              </ul>
+            </div>
+          </div>
+  
+          <div class="edu-card">
+            <h5>PF Soft Solutions, New Delhi</h5>
+            <p><strong>Role:</strong> Software Developer / Team Leader</p>
+            <span class="more-btn" onclick="toggleDetails(this)">More</span>
+            <div class="edu-details">
+              <p>Duration: May 2024 to August 2024</p>
+              <ul>
+                <li>Developed websites backend part using Django.</li>
+                <li>Guided the team.</li>
+              </ul>
+            </div>
+          </div>
+  
+          <div class="edu-card">
+            <h5>Codex Pvt. Ltd., New Delhi</h5>
+            <p><strong>Role:</strong> Software Developer</p>
+            <span class="more-btn" onclick="toggleDetails(this)">More</span>
+            <div class="edu-details">
+              <p>Duration: March 2024 to May 2024</p>
+              <ul>
+                <li>Developed logical software for Arduino functioning.</li>
+                <li>Developed software for automation.</li>
+              </ul>
+            </div>
+          </div>
+  
+          <div class="edu-card">
+            <h5>Mega Card Pvt. Ltd., Noida</h5>
+            <p><strong>Role:</strong> Team Leader</p>
+            <span class="more-btn" onclick="toggleDetails(this)">More</span>
+            <div class="edu-details">
+              <p>Duration: March 2023 to August 2023</p>
+              <ul>
+                <li>Technical Support to company users.</li>
+                <li>Learned about Microsoft Office.</li>
+                <li>Developed communication skills.</li>
+              </ul>
+            </div>
+          </div>
+  
+          <div class="edu-card">
+            <h5>C&S Electric, Noida</h5>
+            <p><strong>Role:</strong> Backup Engineer</p>
+            <span class="more-btn" onclick="toggleDetails(this)">More</span>
+            <div class="edu-details">
+              <p>Duration: March 2023 to August 2023</p>
+              <ul>
+                <li>Technical Support to company users.</li>
+                <li>Learned about Microsoft Office & Linux OS.</li>
+              </ul>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+
+    <!-- Technical Skills Section -->
+    <div class="skills-bar">
+      <h4>Technical Skills</h4>
+      <div class="skills-grid">
+
+        <div class="skill-card">
+          <h5>Programming Languages</h5>
+          <p class="skill-list">C, C++ (DSA), Python</p>
+          <div class="bar">
+            <div class="progress">
+              <div class="high" style="--width: 90%; animation-delay: 0.1s;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <h5>Development</h5>
+          <p class="skill-list">HTML, CSS, JavaScript</p>
+          <div class="bar">
+            <div class="progress">
+              <div class="medium" style="--width: 75%; animation-delay: 0.2s;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <h5>Database</h5>
+          <p class="skill-list">MySQL, Chroma DB</p>
+          <div class="bar">
+            <div class="progress">
+              <div class="medium" style="--width: 70%; animation-delay: 0.3s;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-card">
+            <h5>Agentic AI and Large Language Model</h5>
+            <p class="skill-list">Llama, Claude, GPT, Langchain,Flask</p>
+            <div class="bar">
+              <div class="progress">
+                <div class="high" style="--width: 85%; animation-delay: 0.4s;"></div>
+              </div>
+            </div>
+          </div>
+
+        <div class="skill-card">
+          <h5>Machine Learning & Artificial Intelligence</h5>
+          <p class="skill-list">PyTorch, TensorFlow, Django</p>
+          <div class="bar">
+            <div class="progress">
+              <div class="high" style="--width: 85%; animation-delay: 0.5s;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <h5>Data Science</h5>
+          <p class="skill-list">Standard ML Algorithms (Regression, Classification, Clustering)</p>
+          <div class="bar">
+            <div class="progress">
+              <div class="medium" style="--width: 65%; animation-delay: 0.6s;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <h5>Data Analysis</h5>
+          <p class="skill-list">Numpy, Pandas, Matplotlib, Power BI, MS Excel</p>
+          <div class="bar">
+            <div class="progress">
+              <div class="medium" style="--width: 70%; animation-delay: 0.7s;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <h5>Developer Tools</h5>
+          <p class="skill-list">VS Code, Pycharm, MySql Work Bench</p>
+          <div class="bar">
+            <div class="progress">
+              <div class="medium" style="--width: 75%; animation-delay: 0.8s;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <h5>Cloud</h5>
+          <p class="skill-list">AWS cloud, Microsoft Azure, Google Colab</p>
+          <div class="bar">
+            <div class="progress">
+              <div class="medium" style="--width: 65%; animation-delay: 0.9s;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <h5>Computer Networks</h5>
+          <p class="skill-list">Cisco Packet Tracer</p>
+          <div class="bar">
+            <div class="progress">
+              <div class="low" style="--width: 45%; animation-delay: 0.10s;"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    
+
+    <a href="{{ url_for('static', filename='Vishal_Resume.pdf') }}" download class="resume-download" aria-label="Download Resume">Download Resume</a>
+
+    <div class="social-icons" aria-label="Social media links">
+      <a href="https://github.com/Vishal87950" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/vishal-chauhan-a732b7223/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://youtube.com/@vishalrajputchauhan87950?si=aNwK7QCe0Z3MHWeM" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      <a href="https://telegram.com/@vishal_chauhan_87950" target="_blank" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+      <a href="https://www.instagram.com/vishalchauhan87950?igsh=MWhxMDU5YTMwenVtOQ%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+</section>
+
+<script>
+  function toggleDetails(element) {
+    const details = element.nextElementSibling;
+    if (details.style.display === "block") {
+      details.style.display = "none";
+      element.textContent = "More";
+    } else {
+      details.style.display = "block";
+      element.textContent = "Less";
+    }
+  }
+</script>
+{% endblock %}

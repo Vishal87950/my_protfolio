@@ -1,0 +1,211 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+  .projects-section {
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 40px 20px;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #fff;
+  }
+
+  .projects-section h2 {
+    font-size: 2.8rem;
+    text-align: center;
+    margin-bottom: 50px;
+    color: #000;
+    position: relative;
+  }
+
+  .projects-section h2::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 5px;
+    background-color: #FFD700;
+    margin: 10px auto 0;
+    border-radius: 5px;
+  }
+
+  .project-card {
+    background: #000;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    margin-bottom: 30px;
+    transition: transform 0.3s ease;
+    color: #fff;
+  }
+
+  .project-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .project-card h3 {
+    font-size: 1.6rem;
+    color: #FFD700;
+    margin-bottom: 10px;
+  }
+
+  .project-role {
+    font-weight: 600;
+    color: #ccc;
+    margin-bottom: 10px;
+  }
+
+  .project-card ul {
+    padding-left: 20px;
+    list-style: disc;
+  }
+
+  .project-card ul li {
+    margin-bottom: 8px;
+    line-height: 1.6;
+    color: #f8f8f8;
+  }
+
+  .tech-stack {
+    font-style: italic;
+    color: #FFD700;
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+  }
+
+  @media (max-width: 768px) {
+    .projects-section {
+      padding: 30px 15px;
+    }
+
+    .projects-section h2 {
+      font-size: 2.2rem;
+      margin-bottom: 30px;
+    }
+
+    .project-card {
+      padding: 20px;
+    }
+
+    .project-card h3 {
+      font-size: 1.4rem;
+    }
+
+    .tech-stack {
+      font-size: 0.85rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .projects-section h2 {
+      font-size: 1.8rem;
+    }
+
+    .project-card {
+      padding: 15px;
+    }
+
+    .project-card h3 {
+      font-size: 1.2rem;
+    }
+
+    .tech-stack {
+      font-size: 0.75rem;
+    }
+
+    .project-card ul {
+      padding-left: 15px;
+    }
+  }
+</style>
+
+
+
+<section class="projects-section" aria-label="My Projects">
+  <h2>Projects</h2>
+
+  <div class="project-card">
+    <h3>Text2SQL LLM</h3>
+    <div class="tech-stack">Tech: Python, AWS Bedrock (Claude), SQLite, Pandas</div>
+    <ul>
+      <li>Developed a Text-to-SQL model using Claude-3 via AWS Bedrock.</li>
+      <li>Converted natural language queries into SQL for structured databases.</li>
+      <li>Used Pandas & SQLite for database management and query execution.</li>
+    </ul>
+  </div>
+
+  <div class="project-card">
+    <h3>Chatbot for Telecom Data</h3>
+    <div class="tech-stack">Tech: Python, AWS Bedrock, LangChain</div>
+    <ul>
+      <li>Built a conversational AI chatbot for telecom data analysis.</li>
+      <li>Integrated Claude-3 & LangChain for real-time intelligent responses.</li>
+      <li>Delivered customer insights based on service usage data.</li>
+    </ul>
+  </div>
+
+  <div class="project-card">
+    <h3>Chatbot for Sales Data</h3>
+    <div class="tech-stack">Tech: Python, AWS Bedrock, Streamlit</div>
+    <ul>
+      <li>Developed an AI chatbot to analyze sales trends and metrics.</li>
+      <li>Implemented LLM-based query processing for business insights.</li>
+      <li>Created an interactive Streamlit UI for real-time analytics.</li>
+    </ul>
+  </div>
+
+  <div class="project-card">
+    <h3>Business Insights Dashboard</h3>
+    <div class="tech-stack">Tech: Power BI, SQL</div>
+    <ul>
+      <li>Built a Power BI dashboard to visualize business performance data.</li>
+      <li>Transformed raw data into actionable KPIs and charts.</li>
+      <li>Automated reports on sales, customer behavior, and performance trends.</li>
+    </ul>
+  </div>
+
+  <!-- ✅ New Project 1 -->
+  <div class="project-card">
+    <h3>E-Commerce Website for RV Dairy</h3>
+    <div class="tech-stack">Tech: Python, Flask, HTML, CSS, JavaScript, SQL</div>
+    <ul>
+      <li>Developed a full-stack web application for RV Dairy to manage online orders.</li>
+      <li>Integrated user authentication, product catalog, and order tracking features.</li>
+      <li>Used SQL for data storage and Python Flask for backend APIs.</li>
+    </ul>
+  </div>
+
+  <!-- ✅ New Project 2 -->
+  <div class="project-card">
+    <h3>Matrimonial Website</h3>
+    <div class="tech-stack">Tech: Python, Flask, HTML, CSS, JavaScript, SQL</div>
+    <ul>
+      <li>Designed and developed a matrimonial platform with user registration and profile management.</li>
+      <li>Implemented match-making algorithm and secure login system.</li>
+      <li>Managed relational user data with SQL and created responsive UI with HTML/CSS.</li>
+    </ul>
+  </div>
+
+  <!-- ✅ New Project 3 -->
+  <div class="project-card">
+    <h3>Heart Disease Predictor</h3>
+    <div class="tech-stack">Tech: Python, Machine Learning (Logistic Regression), Streamlit</div>
+    <ul>
+      <li>Created a predictive web app to determine heart disease likelihood based on health metrics.</li>
+      <li>Used Logistic Regression and trained model on medical dataset.</li>
+      <li>Built frontend interface using Streamlit for real-time predictions.</li>
+    </ul>
+  </div>
+
+  <!-- ✅ New Project 4 -->
+  <div class="project-card">
+    <h3>Car Price Predictor</h3>
+    <div class="tech-stack">Tech: Python, Machine Learning (Linear Regression)</div>
+    <ul>
+      <li>Developed a regression model to estimate car prices based on input features.</li>
+      <li>Cleaned and prepared dataset for training using Pandas and Scikit-learn.</li>
+      <li>Visualized results and performance metrics for model evaluation.</li>
+    </ul>
+  </div>
+
+</section>
+{% endblock %}
